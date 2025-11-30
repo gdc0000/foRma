@@ -1,0 +1,116 @@
+{
+  "edges": [
+    {
+      "id": "gen-e-0",
+      "label": "0.252***",
+      "lineType": "straight",
+      "sourceId": "gen-n-1",
+      "targetId": "gen-n-0",
+      "isSignificant": true
+    },
+    {
+      "id": "gen-e-1",
+      "label": "0.386***",
+      "lineType": "straight",
+      "sourceId": "gen-n-1",
+      "targetId": "gen-n-2",
+      "isSignificant": true
+    },
+    {
+      "id": "gen-e-2",
+      "label": "-0.041",
+      "lineType": "straight",
+      "sourceId": "gen-n-0",
+      "targetId": "gen-n-3",
+      "isSignificant": false
+    },
+    {
+      "id": "gen-e-3",
+      "label": "0.217***",
+      "lineType": "straight",
+      "sourceId": "gen-n-2",
+      "targetId": "gen-n-3",
+      "isSignificant": true
+    },
+    {
+      "id": "gen-e-4",
+      "label": "0.070",
+      "lineType": "straight",
+      "sourceId": "gen-n-1",
+      "targetId": "gen-n-3",
+      "isSignificant": false
+    },
+    {
+      "id": "gen-e-5",
+      "label": "0.160***",
+      "lineType": "straight",
+      "sourceId": "gen-n-4",
+      "targetId": "gen-n-3",
+      "isSignificant": true
+    },
+    {
+      "id": "gen-e-6",
+      "label": "0.023",
+      "lineType": "straight",
+      "sourceId": "gen-n-5",
+      "targetId": "gen-n-3",
+      "isSignificant": false
+    }
+  ],
+  "nodes": [
+    {
+      "x": 347,
+      "y": -68,
+      "id": "gen-n-0",
+      "type": "OBSERVED",
+      "label": "QSign",
+      "width": 100,
+      "height": 60
+    },
+    {
+      "x": 97,
+      "y": -18,
+      "id": "gen-n-1",
+      "type": "OBSERVED",
+      "label": "T_F",
+      "width": 100,
+      "height": 60
+    },
+    {
+      "x": 347,
+      "y": 82,
+      "id": "gen-n-2",
+      "type": "OBSERVED",
+      "label": "QSafe",
+      "width": 100,
+      "height": 60
+    },
+    {
+      "x": 597,
+      "y": -18,
+      "id": "gen-n-3",
+      "type": "OBSERVED",
+      "label": "COOP",
+      "width": 100,
+      "height": 60
+    },
+    {
+      "x": 97,
+      "y": 132,
+      "id": "gen-n-4",
+      "type": "OBSERVED",
+      "label": "SEX",
+      "width": 100,
+      "height": 60
+    },
+    {
+      "x": 97,
+      "y": 282,
+      "id": "gen-n-5",
+      "type": "OBSERVED",
+      "label": "AGE",
+      "width": 100,
+      "height": 60
+    }
+  ]
+}
