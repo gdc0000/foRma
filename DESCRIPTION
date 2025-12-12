@@ -1,19 +1,29 @@
-Package: formasem
-Type: Package
-Title: Rule-based Renderer for Structural Equation Models
-Version: 0.1.0
-Authors@R: person("Gemini", "CLI", email = "gemini-cli@google.com", role = c("aut", "cre"))
-Description: Renders Structural Equation Model (SEM) diagrams from a JSON input using ggplot2 and ggforce, adhering to standard social science visualization practices.
-License: MIT
+Package: foRma
+Title: Structural Equation Model Visualization with AI
+Version: 1.0.0
+Authors@R: person("Gabriele", "Di Cicco", email = "gabriele.dicicco@gmail.com", role = c("aut", "cre"))
+Author: Gabriele Di Cicco [aut, cre]
+Maintainer: Gabriele Di Cicco <gabriele.dicicco@gmail.com>
+Description: Provides tools for visualizing Structural Equation Models (SEM) using AI-generated layouts. The package integrates with the lavaan package and uses Google's Gemini API to create optimized, publication-quality SEM plots. It offers both static ggplot2 visualizations with APA-style formatting and interactive visNetwork widgets for exploration. The AI-powered layout algorithm automatically positions nodes based on causal flow, making complex models easier to understand and present.
+License: MIT + file LICENSE
 Encoding: UTF-8
-LazyData: true
-RoxygenNote: 7.3.1
-Imports:
+
+RoxygenNote: 7.3.3
+URL: https://github.com/gdc0000/foRma
+BugReports: https://github.com/gdc0000/foRma/issues
+Imports: 
     ggplot2,
     ggforce,
+    visNetwork,
     jsonlite,
     dplyr,
-    purrr
-Suggests:
-    testthat (>= 3.0.0)
-Config/testthat/edition: 3
+    purrr,
+    httr2,
+    stringr,
+    lavaan,
+    magrittr
+Suggests: 
+    testthat (>= 3.0.0),
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr

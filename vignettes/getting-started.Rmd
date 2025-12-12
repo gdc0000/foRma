@@ -1,0 +1,146 @@
+---
+title: "Getting Started with foRma"
+author: "Gabriele Di Cicco"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Getting Started with foRma}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+```
+
+# Introduction
+
+The `foRma` package provides tools for visualizing Structural Equation Models (SEM) using AI-generated layouts. It integrates with the `lavaan` package and uses Google's Gemini API to create optimized, publication-quality SEM plots.
+
+# Installation
+
+```{r eval=FALSE}
+# Install from CRAN (when available)
+install.packages("foRma")
+
+# Or install the development version
+devtools::install_github("gdc0000/foRma")
+```
+
+# Setup
+
+Before using `foRma`, you need to set up your Gemini API key:
+
+## Getting a Gemini API Key
+
+1. Go to [Google AI Studio](https://makersuite.google.com/app/apikey)
+2. Sign in with your Google account
+3. Click "Create API Key"
+4. Copy the generated key
+
+## Setting the API Key
+
+You can set the API key in several ways:
+
+```{r eval=FALSE}
+# Option 1: Set as environment variable (recommended)
+Sys.setenv(GEMINI_API_KEY = "your_actual_api_key_here")
+
+# Option 2: Pass directly to the function (not recommended for security)
+# visualize_sem(fit, api_key = "your_actual_api_key_here")
+```
+
+**Note**: The `visualize_sem()` function will automatically use the `GEMINI_API_KEY` environment variable if it's set.
+
+# Basic Usage
+
+## Load Packages
+
+```{r}
+library(foRma)
+library(lavaan)
+```
+
+## Define and Fit a Model
+
+```{r}
+# Define a simple SEM model
+model <- '
+  visual  =~ x1 + x2 + x3
+  textual =~ x4 + x5 + x6
+  visual ~~ textual
+'
+
+# Generate simulated data
+set.seed(1234)
+data <- simulateData(model, sample.nobs = 100)
+
+# Fit the model
+fit <- sem(model, data = data)
+```
+
+## Create Visualizations
+
+### Static Plot
+
+```{r eval=FALSE}
+# Create a static SEM plot
+static_plot <- visualize_sem(fit, interactive = FALSE)
+print(static_plot)
+```
+
+This will generate a publication-ready ggplot with:
+- Latent variables shown as ellipses
+- Observed variables shown as rectangles  
+- Significant paths as solid lines
+- Non-significant paths as dashed lines
+- APA-style coefficient formatting with significance stars
+
+### Interactive Plot
+
+```{r eval=FALSE}
+# Create an interactive SEM plot
+interactive_plot <- visualize_sem(fit, interactive = TRUE)
+print(interactive_plot)
+```
+
+This creates an interactive HTML widget where you can:
+- Drag and drop nodes to rearrange the layout
+- Zoom in/out and pan around the diagram
+- Hover over elements for additional information
+- Export the diagram in various formats
+
+# Troubleshooting
+
+## Common Issues
+
+### API Key Problems
+```{r eval=FALSE}
+# Error: "Gemini API request failed"
+# Solution: Check your API key is valid and has sufficient quota
+```
+
+### Model Compatibility
+```{r eval=FALSE}
+# Error: "Summary capture failed"
+# Solution: Ensure your model is properly fitted with lavaan
+```
+
+### Network Issues
+```{r eval=FALSE}
+# Error: "Failed to parse JSON from Gemini response"
+# Solution: Check your internet connection and try again
+```
+
+## Tips for Success
+
+1. **Start with simple models** before moving to complex SEM
+2. **Check model fit** before visualization
+3. **Use simulated data** for testing and learning
+4. **Save your plots** using `ggsave()` for static plots or export options for interactive plots
+
+# Advanced Features
+
+The package supports complex SEM models with multiple latent variables, observed variables, and various path types. The AI-powered layout algorithm automatically optimizes node positioning for clarity and aesthetic appeal.
+
+For more detailed examples and troubleshooting, see the package documentation and function help pages using `?visualize_sem`, `?draw_sem`, and `?draw_sem_interactive`.
