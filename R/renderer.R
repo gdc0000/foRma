@@ -2,12 +2,34 @@
 
 #' Render the SEM plot from parsed data frames.
 #' @param json_data A list containing parsed JSON data with 'nodes' and 'edges' elements from the Gemini API response.
+#' @return A ggplot object containing the SEM visualization.
+#' @examples
+#' \dontrun{
+#' # This function is typically called internally by visualize_sem()
+#' # See ?visualize_sem for complete examples
+#' 
+#' # Example with mock data
+#' mock_data <- list(
+#'   nodes = data.frame(
+#'     id = "node1", label = "Var1", x = 200, y = 400, 
+#'     type = "OBSERVED", width = 100, height = 60
+#'   ),
+#'   edges = data.frame(
+#'     sourceId = "node1", targetId = "node2", 
+#'     label = "0.25***", lineType = "straight", 
+#'     isSignificant = TRUE, labelPosition = 0.5
+#'   )
+#' )
+#' 
+#' # plot <- draw_sem(mock_data)
+#' # print(plot)
+#' }
 #' @importFrom ggplot2 ggplot geom_segment geom_curve geom_label geom_rect geom_text scale_linetype_manual scale_y_reverse theme_void theme margin element_rect coord_fixed aes arrow unit
 #' @importFrom ggforce geom_ellipse
 #' @importFrom dplyr filter
 #' @importFrom stringr str_wrap
 #' @importFrom magrittr %>%
-#' @importFrom graphics arrows
+
 #' @export
 draw_sem <- function(json_data) {
   

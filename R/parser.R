@@ -94,7 +94,7 @@ parse_and_prepare_data <- function(json_data) {
   
   # Validation
   if(!all(c("sourceId", "targetId") %in% names(edges_df))) {
-    stop("Edges JSON missing source/target IDs.", call.=FALSE)
+    stop("Edges JSON missing source/target IDs.", call. = FALSE)
   }
   
   # ============================================================================

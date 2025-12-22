@@ -5,6 +5,20 @@
 #' @param input_text The raw statistical text (e.g., from lavaan summary).
 #' @param api_key The Google Gemini API key.
 #' @return A list parsed from the JSON response, containing nodes and edges.
+#' @examples
+#' \dontrun{
+#' # Set API key
+#' Sys.setenv(GEMINI_API_KEY = "your_api_key_here")
+#' 
+#' # Example summary text
+#' summary_text <- "visual =~ x1 + x2 + x3"
+#' 
+#' # Query Gemini API
+#' result <- query_gemini(summary_text, "your_api_key_here")
+#' 
+#' # View result structure
+#' str(result)
+#' }
 #' @importFrom httr2 request req_body_json req_headers req_retry req_perform resp_status resp_body_string resp_body_json
 #' @importFrom stringr str_remove_all
 #' @importFrom jsonlite fromJSON

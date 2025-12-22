@@ -4,6 +4,24 @@
 #' @param object Fitted model object (lavaan).
 #' @param api_key Gemini API Key.
 #' @param interactive Logical. If TRUE, returns a drag-and-drop HTML widget. If FALSE (default), returns a static ggplot.
+#' @return Either a ggplot object (static) or visNetwork HTML widget (interactive) containing the SEM visualization.
+#' @examples
+#' \dontrun{
+#' library(lavaan)
+#' # Define a simple SEM model
+#' model <- 'visual =~ x1 + x2 + x3'
+#' data <- simulateData(model, sample.nobs = 100)
+#' fit <- sem(model, data = data)
+#' 
+#' # Set API key
+#' Sys.setenv(GEMINI_API_KEY = "your_api_key_here")
+#' 
+#' # Create static plot
+#' static_plot <- visualize_sem(fit, interactive = FALSE)
+#' 
+#' # Create interactive plot
+#' interactive_plot <- visualize_sem(fit, interactive = TRUE)
+#' }
 #' @importFrom utils capture.output
 #' @importFrom magrittr %>%
 #' @export
@@ -23,14 +41,14 @@ visualize_sem <- function(object, api_key = Sys.getenv("GEMINI_API_KEY"), intera
     paste(capture.output(lavaan::summary(object, standardized = TRUE, nd = 3)), collapse = "\n")
   }, error = function(e) stop("Summary capture failed."))
   
-  cat("Analyzing Model...\n")
+  message("Analyzing Model...")
   gemini_json <- query_gemini(summary_text, api_key)
   
   if (interactive) {
-    cat("Launching Interactive Studio...\n")
+    message("Launching Interactive Studio...")
     return(draw_sem_interactive(gemini_json))
   } else {
-    cat("Rendering Static Plot...\n")
+    message("Rendering Static Plot...")
     return(draw_sem(gemini_json))
   }
 }

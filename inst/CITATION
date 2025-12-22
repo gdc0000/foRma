@@ -7,12 +7,12 @@ citEntry(entry = "Manual",
            email = "gabriele.dicicco@gmail.com", 
            role = c("aut", "cre"))
   ),
-  year         = "2024",
+  year         = "2025",
   note         = "R package version 1.0.0",
   url          = "https://github.com/gdc0000/foRma",
   
   textVersion  =
-  paste0("Di Cicco, G. (2024). foRma: Structural Equation Model Visualization with AI. ",
+  paste0("Di Cicco, G. (2025). foRma: Structural Equation Model Visualization with AI. ",
            "R package version 1.0.0. ",
            "URL https://github.com/gdc0000/foRma")
 )
