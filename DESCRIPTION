@@ -7,7 +7,6 @@ Maintainer: Gabriele Di Cicco <gabriele.dicicco@gmail.com>
 Description: Provides tools for visualizing Structural Equation Models (SEM) using AI-generated layouts. The package integrates with the lavaan package and uses Google's Gemini API to create optimized, publication-quality SEM plots. It offers both static ggplot2 visualizations with APA-style formatting and interactive visNetwork widgets for exploration. The AI-powered layout algorithm automatically positions nodes based on causal flow, making complex models easier to understand and present.
 License: MIT + file LICENSE
 Encoding: UTF-8
-
 RoxygenNote: 7.3.3
 URL: https://github.com/gdc0000/foRma
 BugReports: https://github.com/gdc0000/foRma/issues

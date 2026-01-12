@@ -11,40 +11,33 @@ visualize_sem(
 )
 }
 \arguments{
-\item{object}{Fitted model object from lavaan package. Must be a properly fitted SEM or CFA model.}
+\item{object}{Fitted model object (lavaan).}
 
-\item{api_key}{Gemini API Key. Can be set via GEMINI_API_KEY environment variable. Get API key from https://makersuite.google.com/app/apikey}
+\item{api_key}{Gemini API Key.}
 
-\item{interactive}{Logical. If TRUE, returns a drag-and-drop HTML widget using visNetwork. If FALSE (default), returns a static ggplot object.}
+\item{interactive}{Logical. If TRUE, returns a drag-and-drop HTML widget. If FALSE (default), returns a static ggplot.}
+}
+\value{
+Either a ggplot object (static) or visNetwork HTML widget (interactive) containing the SEM visualization.
 }
 \description{
-High-level function to visualize a Structural Equation Model. This function captures the model summary, sends it to Google Gemini API for intelligent layout generation, and returns either a static ggplot or interactive visNetwork plot. Requires a valid Gemini API key set via GEMINI_API_KEY environment variable or api_key parameter.
+High-level function to visualize a Structural Equation Model.
 }
 \examples{
 \dontrun{
-library(foRma)
 library(lavaan)
+# Define a simple SEM model
+model <- 'visual =~ x1 + x2 + x3'
+data <- simulateData(model, sample.nobs = 100)
+fit <- sem(model, data = data)
 
 # Set API key
 Sys.setenv(GEMINI_API_KEY = "your_api_key_here")
 
-# Define model
-model <- '
-  visual  =~ x1 + x2 + x3
-  textual =~ x4 + x5 + x6
-  visual ~~ textual
-'
-
-# Generate data and fit model
-data <- simulateData(model, sample.nobs = 100)
-fit <- sem(model, data = data)
-
 # Create static plot
 static_plot <- visualize_sem(fit, interactive = FALSE)
-print(static_plot)
 
 # Create interactive plot
 interactive_plot <- visualize_sem(fit, interactive = TRUE)
-print(interactive_plot)
 }
 }

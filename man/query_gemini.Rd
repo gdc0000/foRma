@@ -15,12 +15,20 @@ query_gemini(input_text, api_key)
 A list parsed from the JSON response, containing nodes and edges.
 }
 \description{
-Query the Gemini API to generate a layout for a SEM model. This function sends lavaan model summary to Google Gemini API and receives JSON response with node positions and edge information for visualization.
+Query the Gemini API to generate a layout for a SEM model.
 }
 \examples{
 \dontrun{
-# This function is typically called internally by visualize_sem()
-# Direct usage requires API key
-result <- query_gemini("lavaan summary text", "your_api_key")
+# Set API key
+Sys.setenv(GEMINI_API_KEY = "your_api_key_here")
+
+# Example summary text
+summary_text <- "visual =~ x1 + x2 + x3"
+
+# Query Gemini API
+result <- query_gemini(summary_text, "your_api_key_here")
+
+# View result structure
+str(result)
 }
 }
