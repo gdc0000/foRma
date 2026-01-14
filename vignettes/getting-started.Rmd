@@ -44,7 +44,7 @@ You can set the API key in several ways:
 
 ```{r eval=FALSE}
 # Option 1: Set as environment variable (recommended)
-Sys.setenv(GEMINI_API_KEY ="AIzaSyCXWDlTOWNMV8vEgngicWAoq_V5ze8YYh4")
+Sys.setenv(GEMINI_API_KEY ="your_actual_api_key_here")
 
 # Option 2: Pass directly to the function (not recommended for security)
 # visualize_sem(fit, api_key = "your_actual_api_key_here")
